@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='Targets List'"></head>
+<body>
+<div th:replace="layout :: navbar(ScanSettings)">(navbar)</div>
+<div class="container">
+    <div class="starter-template">
+        <table class="table-bordered table-hover">
+            <thead>
+            <tr>
+                <th th:text="id">ID</th>
+                <th th:text="title">TITLE</th>
+                <th th:text="value">TIME</th>
+                <th th:text="target_id">TARGET_ID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="scanSettings : ${scanSettingsList}">
+                <td th:text="${scanSettings.id}">targetId</td>
+                <td th:text="${scanSettings.title}">title</td>
+                <td th:text="${scanSettings.time}">title</td>
+                <td th:text="${scanSettings.target.id}">target_id</td>
+                <td>
+                    <a href="scansettings-edit.html"
+                       th:href="@{/scansettings/edit(id = ${scanSettings.id})}">edit</a>
+                </td>
+                <td>
+                    <a href="scan-settings.html"
+                       th:href="@{/scansettings/remove(id = ${scanSettings.id})}">remove</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>

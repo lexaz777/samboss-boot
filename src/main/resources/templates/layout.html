@@ -1,0 +1,81 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="htmlhead">
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+    <link rel="shortcut icon" type="image/png" th:href="@{/images/favicon.png}"></link>
+
+    <!--<title th:text="${title}">(title)</title>-->
+
+    <link th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/starter.css}" rel="stylesheet"></link>
+</head>
+
+<body>
+<div th:fragment="navbar(activeTab)">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" th:href="@{/}">
+            <img src="/images/samboss.png" width="30" height="30"
+                                               class="d-inline-block align-top" alt="samboss.png">
+            SamBoss
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" th:classappend="${activeTab == 'Hosts' ? 'active':''}">
+                    <a class="nav-link" href="/host/list">Hosts<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" th:classappend="${activeTab == 'Scans' ? 'active':''}">
+                    <a class="nav-link" href="/scan/list">Scans</a>
+                </li>
+                <li class="nav-item dropdown" th:classappend="${activeTab == 'Targets' ? 'active':''}">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Setting
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/target/list">Targets</a>
+                        <a class="dropdown-item" href="/scansettings/list">Scan Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <div sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <form th:action="@{/logout}" method="POST">
+                            <input type="submit" class="btn btn-danger" value="Logout"/>
+                        </form>
+                    </li>
+                </div>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="starter-template">
+        <h1>Spring MVC/Thymeleaf/Bootstrap</h1>
+    </div>
+</div>
+
+<div th:fragment="footer" id="footer">
+    <div class="container">
+        <p class="muted credit">2018</p>
+    </div>
+    <script th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+</div>
+
+</body>
+</html>

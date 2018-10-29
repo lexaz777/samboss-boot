@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='Target Edit'"></head>
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+<div class="container">
+    <div class="starter-template">
+        <form class="form-row" th:action="@{/target/add}" th:object="${target}" method="post">
+            <div class="col">
+                <input type="hidden" class="form-control" th:field="*{id}" placeholder="Title"/>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" th:field="*{title}" placeholder="Title"/>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" th:field="*{value}"/>
+            </div>
+            <div class="col">
+                <button name="addTarget" type="submit" class="btn btn-primary">Save Target</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>

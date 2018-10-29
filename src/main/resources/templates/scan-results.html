@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='Scan results'"></head>
+<body>
+<div th:replace="layout :: navbar(ScanResults)">(navbar)</div>
+<div class="starter-template">
+    <table class="table-bordered table-hover">
+        <thead>
+        <tr>
+            <th th:text="port">port</th>
+            <th th:text="port_state">port state</th>
+            <th th:text="service_name">service name</th>
+            <th th:text="service_product">service product</th>
+            <th th:text="scan_id">scanId</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="port : ${portList}">
+            <td th:text="${port.port}">port</td>
+            <td th:text="${port.portState}">port</td>
+            <td th:text="${port.serviceName}">serviceName</td>
+            <td th:text="${port.serviceProduct}">serviceName</td>
+            <td th:text="${port.scan.id}">scanId</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>

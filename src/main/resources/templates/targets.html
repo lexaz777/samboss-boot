@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='Targets List'"></head>
+<body>
+<div th:replace="layout :: navbar(Targets)">(navbar)</div>
+<div class="container">
+    <div class="starter-template">
+        <form class="form-row" th:action="@{/target/add}" th:object="${target}" method="post">
+            <div class="col">
+                <input type="text" class="form-control" th:field="*{title}" placeholder="Title"/>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" th:field="*{value}"/>
+            </div>
+            <div class="col">
+                <button name="addTarget" type="submit" class="btn btn-primary">Add Target</button>
+            </div>
+        </form>
+        <table class="table-bordered table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th th:text="id">ID</th>
+                <th th:text="title">TITLE</th>
+                <th th:text="value">VALUE</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="target : ${targetList}">
+                <td th:text="${target.id}">targetId</td>
+                <td th:text="${target.title}">title</td>
+                <td th:text="${target.value}">value</td>
+                <td>
+                    <a href="target-edit.html"
+                       th:href="@{/target/remove(id = ${target.id})}">remove</a>
+                </td>
+                <td>
+                    <a href="target-edit.html"
+                       th:href="@{/target/edit(id = ${target.id})}">view/edit</a>
+                </td>
+                <td>
+                    <a href="scan-settings.html"
+                       th:href="@{/scansettings/add(id = ${target.id})}">add2scan</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>

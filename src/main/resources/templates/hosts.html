@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='Hosts List'"></head>
+<body>
+<div th:replace="layout :: navbar(Hosts)">(navbar)</div>
+<div class="container">
+    <div class="starter-template">
+        <table class="table-bordered table-hover">
+            <thead>
+            <tr>
+                <th th:text="id">ID</th>
+                <th th:text="ipaddr">ID</th>
+                <th th:text="hostname">HOSTNAME</th>
+                <th th:text="os_id">OS_ID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="host : ${listHosts}">
+                <td th:text="${host.id}">hostId</td>
+                <td th:text="${host.ipaddr}">hostId</td>
+                <td th:text="${host.hostname}">hostname</td>
+                <td th:text="${host.osId}">os_id</td>
+                <td>
+                    <a href="scans.html"
+                       th:href="@{/scan/show(id = ${host.id})}">view</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>

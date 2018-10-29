@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='Scan List'"></head>
+<body>
+<div th:replace="layout :: navbar(Scans)">(navbar)</div>
+<div class="starter-template">
+    <table class="table-bordered table-hover">
+        <thead>
+        <tr>
+            <th th:text="scanId">ID</th>
+            <th th:text="scandate">scan date</th>
+            <th th:text="netobjectipaddr">net object id</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="scan : ${scanList}">
+            <td th:text="${scan.id}">scanId</td>
+            <td th:text="${scan.date}">scanDate</td>
+            <td th:text="${scan.networkObject.ipaddr}">network object name</td>
+            <td>
+                <a href="scan-results.html"
+                   th:href="@{/port/list(id = ${scan.id})}">view</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>
