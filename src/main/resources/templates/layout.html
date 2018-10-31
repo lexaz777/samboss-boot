@@ -30,10 +30,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item" th:classappend="${activeTab == 'Hosts' ? 'active':''}">
-                    <a class="nav-link" href="/host/list">Hosts<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" th:href="@{/host/list}">Hosts<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item" th:classappend="${activeTab == 'Scans' ? 'active':''}">
-                    <a class="nav-link" href="/scan/list">Scans</a>
+                    <a class="nav-link" th:href="@{/scan/list}">Scans</a>
                 </li>
                 <li class="nav-item dropdown" th:classappend="${activeTab == 'Targets' ? 'active':''}">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -41,10 +41,10 @@
                         Setting
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/target/list">Targets</a>
-                        <a class="dropdown-item" href="/scansettings/list">Scan Settings</a>
+                        <a class="dropdown-item" th:href="@{/target/list}">Targets</a>
+                        <a class="dropdown-item" th:href="@{/scansettings/list}">Scan Settings</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" th:href="@{/register/showRegistrationForm}">Register user</a>
                     </div>
                 </li>
                 <div sec:authorize="isAuthenticated()">
@@ -70,7 +70,7 @@
 </div>
 
 <div th:fragment="footer" id="footer">
-    <div class="container">
+    <div class="navbar-fixed-bottom row-fluid navbar-dark bg-dark">
         <p class="muted credit">2018</p>
     </div>
     <script th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
