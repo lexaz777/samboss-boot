@@ -14,7 +14,7 @@ import ru.zakharov.samboss.entities.User;
 import ru.zakharov.samboss.repositories.RoleRepository;
 import ru.zakharov.samboss.repositories.UserRepository;
 
-import java.util.Arrays;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.stream.Collectors;
@@ -50,6 +50,12 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public Collection<Role> findAllRoles() {
         return roleRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public Collection<User> findAll() {
+        return userRepository.findAll();
     }
 
     @Override

@@ -10,6 +10,8 @@ import java.util.Collection;
 public interface UserService extends UserDetailsService {
     User findByUserName(String userName);
 
+    Collection<User> findAll();
+
     void save(SystemUser systemUser);
 
     Collection<Role> findAllRoles();

@@ -69,4 +69,11 @@ public class RegistrationController {
         logger.debug("Successfully created user: " + userName);
         return "registration-confirmation";
     }
+
+    @RequestMapping("/showAllUsers")
+    public String showAllUsers(Model model) {
+        Collection<User> users = userService.findAll();
+        model.addAttribute("users", users);
+        return "user-list";
+    }
 }
