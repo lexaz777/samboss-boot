@@ -30,8 +30,13 @@ public class TargetService {
         return targetRepository.findTargetById(targetId);
     }
 
-    public void removeTarget(int id) {
+    public void removeTargetById(int id) {
         targetRepository.deleteById((long) id);
+    }
+
+    public void removeTarget(Target targetToRemove) {
+        if (targetToRemove == null) return;
+        targetRepository.delete(targetToRemove);
     }
 
 }

@@ -39,7 +39,7 @@ public class TargetsController {
 
     @RequestMapping("/remove")
     public String removeTargetById(@RequestParam int id) {
-        targetService.removeTarget(id);
+        targetService.removeTargetById(id);
         return "redirect:/target/list";
     }
 

@@ -46,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/api/**").permitAll()
                 .antMatchers("/register/**").hasRole("ADMIN")
                 .antMatchers("/target/**").hasAnyRole("ADMIN","MANAGER")
                 .antMatchers("/scansettings/**").hasAnyRole("ADMIN","MANAGER")
@@ -59,6 +60,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
+        //TO DO  - add correct way to work with CSRF for API
+        http.csrf().ignoringAntMatchers("/api/**");
     }
 
     @Bean

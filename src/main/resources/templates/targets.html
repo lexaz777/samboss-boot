@@ -30,16 +30,17 @@
                 <td th:text="${target.title}">title</td>
                 <td th:text="${target.value}">value</td>
                 <td>
+
                     <a href="target-edit.html"
-                       th:href="@{/target/remove(id = ${target.id})}">remove</a>
+                       th:href="@{/target/remove(id = ${target.id})}"><i class="far fa-trash-alt"></i>remove</a>
                 </td>
                 <td>
                     <a href="target-edit.html"
-                       th:href="@{/target/edit(id = ${target.id})}">view/edit</a>
+                       th:href="@{/target/edit(id = ${target.id})}"><i class="fas fa-edit"></i>view/edit</a>
                 </td>
                 <td>
                     <a href="scan-settings.html"
-                       th:href="@{/scansettings/add(id = ${target.id})}">add2scan</a>
+                       th:href="@{/scansettings/add(id = ${target.id})}"><i class="fas fa-plus-circle"></i>add2scan</a>
                 </td>
             </tr>
             </tbody>
